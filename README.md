@@ -12,6 +12,8 @@ There are some guides to design React components/containers from mockup before d
 
 ### Atomic Web Design
 
+![Atomic Design](/atomic-design.png?raw=true)
+
 Atomic design is methodology for creating design systems.
 
 *The idea is grabbed from chemistry.*
@@ -23,13 +25,7 @@ There are five distinct levels in atomic design:
 * Templates
 * Pages
 
-![Atomic Design](/atomic-design.png?raw=true)
-
 Let's take **Airbnb** for example.
-
-![Airbnb Example](/airbnb.png?raw=true)
-
-Here is how it is going to be divided:
 
 ![Airbnb Example](/airbnb-structured.png?raw=true)
 
@@ -40,5 +36,4 @@ Nice articles:
 * [Principles](http://bradfrost.com/blog/post/atomic-web-design)
 * [Nice demo to understand principles](http://demo.patternlab.io/)
 * [Boilerplate](https://arc.js.org/)
-
-### [How should I separate components][https://reactarmory.com/answers/how-should-i-separate-components]
+* [How should I separate components](https://reactarmory.com/answers/how-should-i-separate-components)
