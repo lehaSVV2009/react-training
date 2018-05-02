@@ -3,6 +3,7 @@
 ReactJS/Redux/Mobx/React Native interesting notes
 
 - [Thinking in Components](#thinking-in-components)
+- [Virtual DOM](#virtual-dom)
 
 Have fun :smile:
 
@@ -37,3 +38,60 @@ Nice articles:
 * [Nice demo to understand principles](http://demo.patternlab.io/)
 * [Boilerplate](https://arc.js.org/)
 * [How should I separate components](https://reactarmory.com/answers/how-should-i-separate-components)
+
+## Virtual DOM
+
+Full rerendering when data is changed (rerender only comopnents that need to update).
+
+*Virtual DOM is a tree of objects that is stored in memory*
+*Virtual DOM calls API of actual DOM*
+
+Step by step
+1. index.html is loaded.
+2. bundle.js with react.js is loaded.
+3. react.js generates `tree of objects` - Virtual DOM.
+4. react.js `calls HTML DOM API` to render html by Virtual DOM.
+5. react.js `subscribes to all HTML DOM events`.
+6. When user clickes button the `event is fired`.
+7. react.js handles this event - it `generates new Virtual DOM`.
+8. react.js `compares old Virtual DOM with new Virtual DOM` (by special O(N) algorithm).
+9. If there are some changes, it `replaces parts` of old Virtual DOM with new Virtual DOM.
+10. Only after comparison react.js `calls HTML DOM API` to render new Virtual DOM.
+
+### Reconciliation
+
+1. 2 components with same class and id will generate the same tree object. e.g. React creates only one object for virtual dom for one class. And it uses the reference to it in other places.
+2. 2 components of different classes will generate different trees.
+3. Unique keys for list elements are important `<span key={4}>` (only single list item is updated, no need to update all list). If keys are not presented in code, React will rerender full list.
+
+React uses `remove and add` if node is changed and `update` if attributes changed only.
+[Simple Virtual DOM example](/VirtualDOM.html)
+
+### Lists
+
+* It's easy for React to add element to the end.
+* It's hard for React to add element to the beginning.
+* There are some tricks with keys.
+
+### React-Factory
+
+`React-element` - React object for Virtual DOM.
+`React-factory` - Function that allows to create React element.
+`React-component` - Composite of React elements and components.
+
+### React-Fiber
+
+Change of comparison algorithm. Still in development (will be in `16.4` or `17.x`).
+
++:
+1. Asyncrounous `render`.
+2. Rendering prioritization. (Allow to render important things 1st, not so important later).
+3. Use of previous result. Kind of virtual DOM cache.
+4. Interrupt the execution.
+
+### Performance Recommendations
+
+Virtual DOM can be really slow! So:
+1. Always add keys to list items.
+2. Do not add unknown attributes to existing DOM elements (<div myCustomAttribute />) because of always force-update with custom atrtibutes.
+3. Read docs and be up-to-date.
