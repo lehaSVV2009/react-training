@@ -43,10 +43,10 @@ Nice articles:
 
 Full rerendering when data is changed (rerender only comopnents that need to update).
 
-*Virtual DOM is a tree of objects that is stored in memory*
-*Virtual DOM calls API of actual DOM*
+*Virtual DOM is a tree of objects that is stored in memory that calls real DOM API*
 
-Step by step
+### How Virtual DOM works
+
 1. index.html is loaded.
 2. bundle.js with react.js is loaded.
 3. react.js generates `tree of objects` - Virtual DOM.
@@ -65,7 +65,7 @@ Step by step
 3. Unique keys for list elements are important `<span key={4}>` (only single list item is updated, no need to update all list). If keys are not presented in code, React will rerender full list.
 
 React uses `remove and add` if node is changed and `update` if attributes changed only.
-[Simple Virtual DOM example](/VirtualDOM.html)
+See [Simple Virtual DOM example](/VirtualDOM.html)
 
 ### Lists
 
@@ -93,5 +93,5 @@ Change of comparison algorithm. Still in development (will be in `16.4` or `17.x
 
 Virtual DOM can be really slow! So:
 1. Always add keys to list items.
-2. Do not add unknown attributes to existing DOM elements (<div myCustomAttribute />) because of always force-update with custom atrtibutes.
+2. Do not add unknown attributes to existing DOM elements (`<div myCustomAttribute />`) because of always force-update with custom atrtibutes.
 3. Read docs and be up-to-date.
