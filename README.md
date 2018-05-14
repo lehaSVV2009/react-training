@@ -95,3 +95,33 @@ Virtual DOM can be really slow! So:
 1. Always add keys to list items.
 2. Do not add unknown attributes to existing DOM elements (`<div myCustomAttribute />`) because of always force-update with custom atrtibutes.
 3. Read docs and be up-to-date.
+
+## Lifecycle
+
+*It is possible to extend your React component by `MyNewBla extends MyAbstractBla`*
+
+![React Lifecycle](/lifecycle.png?raw=true)
+
+First render flow:
+* `getDefaultProps()` - deprecated
+* `getInitialState()` 
+* `componentWillMount()` - deprecated, will be removed soon.
+* `render()` - after this method
+* `componentDidMount()` - good place for first `API call`
+* `componentWillUnmount()`
+
+Update flow (when `.setProps` or `.setState` or `.forceUpdate` is called):
+* `componentWillReceiveProps(nextProps)` - 
+* `shouldComponentUpdate(nextProps, nextState)` - can improve performance, e.g. there is no need to update component when some special prop is updated
+* `componentWillUpdate(nextProps, nextState)`
+* `render()` - 
+* `componentDidUpdate(nextProps, nextState)`
+
+*90% of React components are stateless*
+
+![React Lifecycle Phases](/lifecycle-phases.jpg?raw=true)
+
+*Force update might be useful for performance if you want to rerender smth quickly without `componentWillReceiveProps` and heavy `shouldComponentUpdate`* 
+
+## FAQ
+* How to initialize state? (best practices)
