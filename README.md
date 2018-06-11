@@ -160,14 +160,12 @@ Package by view structure
 
 ```
 - registration-view
-  - selectors
-  - reducers
+  - ducks
   - utils
   - services
   - helpers
 - login-view
-  - selectors
-  - reducers
+  - ducks
   - utils
   - services
   - helpers
@@ -177,17 +175,13 @@ Plugin structure
 
 ```
 - registration-feature
-  - actions
+  - ducks
   - views
-  - reducers
-  - selectors
   - services
   - global/interface/api - calls separate feature actions
 - login-feature
-  - actions
+  - ducks
   - views
-  - reducers
-  - selectors
   - services
   - global/interface/api - calls separate feature actions
 ```
