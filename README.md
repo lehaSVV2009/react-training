@@ -26,13 +26,6 @@ There are five distinct levels in atomic design:
 * Templates - most of the React components (parameterized input)
 * Pages - fullfilled template
 
-Let's take **Airbnb** for example.
-
-![Airbnb Example](/airbnb-structured.png?raw=true)
-
-* Red and Blue - organisms
-* Green - molecules
-
 Nice articles:
 * [Principles](http://bradfrost.com/blog/post/atomic-web-design)
 * [Nice demo to understand principles](http://demo.patternlab.io/)
@@ -128,7 +121,7 @@ Update flow (when `.setProps` or `.setState` or `.forceUpdate` is called):
 * Middlewares
 * Store
 * Reducers
-* 
+* Actions
 
 ### Store
 
