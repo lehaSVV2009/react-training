@@ -20,11 +20,11 @@ Atomic design is methodology for creating design systems.
 *The idea is grabbed from chemistry.*
 
 There are five distinct levels in atomic design:
-* Atoms
-* Molecules
-* Organisms
-* Templates
-* Pages
+* Atoms - labels, icons
+* Molecules - styled labels
+* Organisms - inputs, icon buttons, search inputs, 
+* Templates - most of the React components (parameterized input)
+* Pages - fullfilled template
 
 Let's take **Airbnb** for example.
 
@@ -122,6 +122,91 @@ Update flow (when `.setProps` or `.setState` or `.forceUpdate` is called):
 ![React Lifecycle Phases](/lifecycle-phases.jpg?raw=true)
 
 *Force update might be useful for performance if you want to rerender smth quickly without `componentWillReceiveProps` and heavy `shouldComponentUpdate`* 
+
+## Redux
+
+* Middlewares
+* Store
+* Reducers
+* 
+
+### Store
+
+* Stores information in state.
+* Dispatch actions to appropriate reducer (get list of reducers, send current state and current action)
+
+*Reducer case should always return something new*
+
+* create
+* subscribe
+* unsubscripe
+* dispatch
+
+*If you use `Immutable`, try not to use `.toJS()`. Bad for performance*
+
+## Project structures
+
+Small app structure
+
+```
+- ducks(actions, selectors, reducers)
+- utils
+- services
+- helpers
+- views
+```
+
+Package by view structure
+
+```
+- registration-view
+  - selectors
+  - reducers
+  - utils
+  - services
+  - helpers
+- login-view
+  - selectors
+  - reducers
+  - utils
+  - services
+  - helpers
+```
+
+Plugin structure
+
+```
+- registration-feature
+  - actions
+  - views
+  - reducers
+  - selectors
+  - services
+  - global/interface/api - calls separate feature actions
+- login-feature
+  - actions
+  - views
+  - reducers
+  - selectors
+  - services
+  - global/interface/api - calls separate feature actions
+```
+
+Supervisor-plugin structure
+
+```
+- core/supervisor/(router + redux middleware) - manipulates features and integrations
+- registration-feature
+  - views
+  - ducks
+  - services
+  - global/interface/api
+- login-feature
+  - views
+  - ducks
+  - services
+  - global/interface/api
+```
 
 ## FAQ
 * How to initialize state? (best practices)
